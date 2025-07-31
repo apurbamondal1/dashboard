@@ -3,6 +3,8 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { OverlayPanel } from 'primereact/overlaypanel';
+import type { OverlayPanel as OverlayPanelType } from 'primereact/overlaypanel';
+
 import { InputNumber } from 'primereact/inputnumber';
 
 import 'primereact/resources/primereact.min.css';
@@ -16,9 +18,9 @@ export default function CheckboxRowSelectionDemo() {
     const [rows, setRows] = useState(12);
     const [loading, setLoading] = useState(false);
     const [totalRecords, setTotalRecords] = useState(0);
-    const [selectCount, setSelectCount] = useState(null);
+ const [selectCount, setSelectCount] = useState<number | null>(null);
 
-    const op = useRef(null);
+    const op = useRef<OverlayPanelType>(null);
     const page = first / rows;
 
     const fetchData = async (page: number) => {
@@ -55,7 +57,7 @@ export default function CheckboxRowSelectionDemo() {
         const selected = products.slice(0, count);
 
         setSelectedProducts(selected);
-        op.current.hide();
+        op.current?.hide();
     };
 
     return (
@@ -65,7 +67,7 @@ export default function CheckboxRowSelectionDemo() {
                     type="button"
                     icon="pi pi-cog"
                     label="Select Rows"
-                    onClick={(e) => op.current.toggle(e)}
+                    onClick={(e) => op.current?.toggle(e)}
                     className="p-button-outlined"
                 />
                 <OverlayPanel ref={op}>
