@@ -11,6 +11,8 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 
+
+
 export default function CheckboxRowSelectionDemo() {
     const [products, setProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
@@ -75,7 +77,7 @@ export default function CheckboxRowSelectionDemo() {
                         <div className="mb-2">Select rows...</div>
                         <InputNumber
                             value={selectCount}
-                            onValueChange={(e) => setSelectCount(e.value)}
+                            onValueChange={(e) => setSelectCount(e.value ?? null)}
                             min={1}
                             max={products.length}
                             placeholder="Enter number"
@@ -115,3 +117,6 @@ export default function CheckboxRowSelectionDemo() {
         </div>
     );
 }
+
+
+
